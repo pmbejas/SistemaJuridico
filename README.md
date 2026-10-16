@@ -13,8 +13,8 @@ El sistema cuenta con autenticación preconfigurada para tres perfiles profesion
 | Usuario | Nombre Profesional | Rol en el Despacho | Contraseña |
 | :--- | :--- | :--- | :--- |
 | **`pmbejas@gmail.com`** | Dr. Pablo Bejas | **Socio Titular / Abogado Director** | `pepito123` |
-| **`agarlati@gmail.com`** | Dr. Alejandro Garlati | **Abogado Litigante / Especialista** | `pepito123` |
-| **`asalas@gmail.com`** | Álvaro Salas | **Procurador / Mesa de Entradas** | `pepito123` |
+| **`agarlati@gmail.com`** | Dr. Alejo Garlati | **Abogado Litigante / Especialista** | `pepito123` |
+| **`asalas@gmail.com`** | Dr. Alejo Salas | **Procurador / Mesa de Entradas** | `pepito123` |
 
 > 💡 **Modo Demostración Rápida:** La pantalla de inicio de sesión y la barra superior incluyen botones de acceso con un solo clic para alternar instantáneamente entre los tres perfiles sin necesidad de escribir las credenciales.
 
