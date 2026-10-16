@@ -99,37 +99,37 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto">
       <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-4xl max-h-[92vh] flex flex-col overflow-hidden my-auto">
         {/* Cabecera del Modal */}
-        <div className="p-5 border-b border-slate-200 bg-slate-50 flex items-start justify-between">
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
+        <div className="p-3.5 sm:p-5 border-b border-slate-200 bg-slate-50 flex items-start justify-between gap-2">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 border border-blue-200">
                 N° Causa: {expediente.numeroCausa}
               </span>
-              <span className="text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
+              <span className="text-[10px] sm:text-xs font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
                 {expediente.fuero}
               </span>
-              <span className="text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+              <span className="text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
                 {expediente.estadoProcesal}
               </span>
             </div>
-            <h2 className="text-base sm:text-lg font-black text-slate-900 mt-2 tracking-tight">
+            <h2 className="text-sm sm:text-lg font-black text-slate-900 mt-2 tracking-tight">
               {expediente.caratula}
             </h2>
           </div>
 
           <button
             onClick={alCerrar}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition shrink-0 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Ficha Resumen de Radicación Tribunalicia */}
-        <div className="px-6 py-3.5 bg-blue-50/50 border-b border-blue-100/80 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+        <div className="px-4 sm:px-6 py-3 bg-blue-50/50 border-b border-blue-100/80 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3 text-xs">
           <div className="flex items-center space-x-2">
             <Building className="w-4 h-4 text-blue-600 shrink-0" />
             <div>
@@ -159,13 +159,13 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
         </div>
 
         {/* Cuerpo del Modal: Cronología de Actuaciones */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
-          <div className="flex items-center justify-between">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div>
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wide">
+              <h3 className="text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wide">
                 Línea de Tiempo Procesal ({expediente.movimientos.length} actuaciones)
               </h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-[11px] sm:text-xs text-slate-500">
                 Historia inalterable de actos procesales, decretos y piezas probatorias.
               </p>
             </div>
@@ -173,7 +173,7 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
             {!mostrandoFormulario && (
               <button
                 onClick={() => setMostrandoFormulario(true)}
-                className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-2xs"
+                className="w-full sm:w-auto justify-center px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition flex items-center space-x-1.5 shadow-2xs cursor-pointer"
               >
                 <PlusCircle className="w-3.5 h-3.5" />
                 <span>Agregar Actuación</span>
@@ -185,7 +185,7 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
           {mostrandoFormulario && (
             <form
               onSubmit={manejarGuardarMovimiento}
-              className="p-4 bg-slate-50 rounded-xl border border-blue-200 space-y-4 shadow-xs"
+              className="p-3.5 sm:p-4 bg-slate-50 rounded-xl border border-blue-200 space-y-3.5 shadow-xs"
             >
               <div className="flex justify-between items-center border-b border-slate-200 pb-2">
                 <h4 className="text-xs font-bold text-blue-900 uppercase tracking-wider">
@@ -194,7 +194,7 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
                 <button
                   type="button"
                   onClick={() => setMostrandoFormulario(false)}
-                  className="text-xs text-slate-500 hover:text-slate-800 font-semibold"
+                  className="text-xs text-slate-500 hover:text-slate-800 font-semibold cursor-pointer"
                 >
                   Cancelar
                 </button>
@@ -299,17 +299,17 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
                 </div>
               </div>
 
-              <div className="flex justify-end space-x-2 pt-2">
+              <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setMostrandoFormulario(false)}
-                  className="px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100"
+                  className="w-full sm:w-auto px-3 py-1.5 rounded-lg border border-slate-300 text-xs font-semibold text-slate-700 hover:bg-slate-100 cursor-pointer text-center"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs"
+                  className="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer text-center"
                 >
                   Guardar Actuación
                 </button>
@@ -318,29 +318,29 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
           )}
 
           {/* Listado de Movimientos Procesales */}
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {expediente.movimientos.map((mov, index) => (
               <div
                 key={mov.id}
-                className="p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-200 transition space-y-3"
+                className="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-white hover:border-blue-200 transition space-y-3"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-2.5">
-                    <span className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-200">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                  <div className="flex items-start space-x-2.5 min-w-0">
+                    <span className="w-6 h-6 rounded-full bg-blue-50 text-blue-700 font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
                       {index + 1}
                     </span>
-                    <div>
-                      <div className="flex items-center space-x-2">
-                        <span className="text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="text-[10px] sm:text-[11px] font-bold uppercase px-2 py-0.5 rounded bg-slate-100 text-slate-700">
                           {mov.tipoActuacion}
                         </span>
                         <h4 className="text-xs font-bold text-slate-900">{mov.titulo}</h4>
                       </div>
-                      <p className="text-xs text-slate-600 mt-1">{mov.descripcionFojas}</p>
+                      <p className="text-xs text-slate-600 mt-1 leading-relaxed">{mov.descripcionFojas}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-1 text-slate-400 text-xs shrink-0 font-medium">
+                  <div className="flex items-center space-x-1 text-slate-400 text-[11px] sm:text-xs shrink-0 font-medium self-end sm:self-auto">
                     <Calendar className="w-3.5 h-3.5" />
                     <span>{mov.fechaActuacion}</span>
                   </div>
@@ -348,16 +348,16 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
 
                 {/* Bloque de Cargo Judicial (Fe pública) */}
                 {mov.cargoJudicial && (
-                  <div className="p-2.5 bg-amber-50/70 rounded-lg border border-amber-200/80 flex items-center justify-between text-xs text-amber-900">
-                    <div className="flex items-center space-x-2">
-                      <Stamp className="w-4 h-4 text-amber-700 shrink-0" />
+                  <div className="p-2.5 bg-amber-50/70 rounded-lg border border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-amber-900">
+                    <div className="flex items-start sm:items-center space-x-2">
+                      <Stamp className="w-4 h-4 text-amber-700 shrink-0 mt-0.5 sm:mt-0" />
                       <div>
                         <span className="font-bold">Cargo Fechador Judicial:</span> Presentado el{' '}
                         <span className="font-semibold">{mov.cargoJudicial.fechaPresentacion}</span> a las{' '}
                         <span className="font-semibold">{mov.cargoJudicial.horaPresentacion}</span> ({mov.cargoJudicial.fojasPresentadas} fojas).
                       </div>
                     </div>
-                    <span className="text-[11px] text-amber-700 hidden sm:inline">
+                    <span className="text-[11px] text-amber-700 pl-6 sm:pl-0">
                       {mov.cargoJudicial.funcionarioReceptor}
                     </span>
                   </div>
@@ -366,31 +366,31 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
                 {/* Bloque de Documento con Huella Criptográfica SHA-256 */}
                 {mov.documentoAnexo && (
                   <div className="p-3 bg-slate-900 text-slate-200 rounded-lg text-xs space-y-1.5 shadow-xs">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
-                        <FileCheck2 className="w-4 h-4 text-sky-400" />
-                        <span className="font-bold text-white">
+                    <div className="flex items-center justify-between flex-wrap gap-1">
+                      <div className="flex items-center space-x-2 min-w-0">
+                        <FileCheck2 className="w-4 h-4 text-sky-400 shrink-0" />
+                        <span className="font-bold text-white truncate">
                           {mov.documentoAnexo.nombreArchivo}
                         </span>
-                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-sky-950 text-sky-300 border border-sky-800">
+                        <span className="text-[10px] px-1.5 py-0.2 rounded bg-sky-950 text-sky-300 border border-sky-800 shrink-0">
                           {mov.documentoAnexo.numeroVersion}
                         </span>
                       </div>
-                      <span className="text-[11px] text-slate-400">
+                      <span className="text-[11px] text-slate-400 shrink-0">
                         {mov.documentoAnexo.cantidadFojas} fojas
                       </span>
                     </div>
 
-                    <div className="flex items-center justify-between bg-slate-950 p-2 rounded border border-slate-800">
-                      <div className="flex items-center space-x-1.5 font-mono text-[11px] text-slate-400 truncate">
+                    <div className="flex items-center justify-between bg-slate-950 p-2 rounded border border-slate-800 gap-2">
+                      <div className="flex items-center space-x-1.5 font-mono text-[10px] sm:text-[11px] text-slate-400 min-w-0">
                         <Hash className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                        <span className="truncate">{mov.documentoAnexo.huellaSha256}</span>
+                        <span className="truncate break-all">{mov.documentoAnexo.huellaSha256}</span>
                       </div>
 
                       <button
                         type="button"
                         onClick={() => copiarHash(mov.documentoAnexo!.huellaSha256, mov.id)}
-                        className="ml-2 text-slate-400 hover:text-white shrink-0 p-1 rounded"
+                        className="text-slate-400 hover:text-white shrink-0 p-1 rounded cursor-pointer"
                         title="Copiar hash SHA-256"
                       >
                         {copiadoId === mov.id ? (
@@ -408,11 +408,11 @@ export function DetalleExpedienteModal({ expediente, alCerrar }: DetalleExpedien
         </div>
 
         {/* Pie del Modal */}
-        <div className="p-4 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
-          <span>Observación estratégica: {expediente.observacionesEstrategicas}</span>
+        <div className="p-3.5 sm:p-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 text-xs text-slate-500">
+          <span className="truncate">Observación: {expediente.observacionesEstrategicas}</span>
           <button
             onClick={alCerrar}
-            className="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg transition"
+            className="w-full sm:w-auto px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold rounded-lg transition cursor-pointer text-center shrink-0"
           >
             Cerrar Legajo
           </button>

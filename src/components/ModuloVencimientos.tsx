@@ -9,6 +9,7 @@ import {
   Plus,
   AlertCircle,
   FileText,
+  X,
 } from 'lucide-react';
 import { useExpedientes } from '../context/ExpedientesContext';
 import { useAuth } from '../context/AuthContext';
@@ -55,35 +56,35 @@ export function ModuloVencimientos() {
   };
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       {/* Cabecera y Selector de Vista */}
-      <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-center space-x-2">
+      <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
           <button
             onClick={() => setFiltroEstado('PENDIENTES')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+            className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer text-center ${
               filtroEstado === 'PENDIENTES'
                 ? 'bg-blue-600 text-white shadow-xs'
-                : 'text-slate-600 hover:bg-slate-100'
+                : 'text-slate-600 hover:bg-slate-100 bg-slate-50 sm:bg-transparent'
             }`}
           >
-            Términos Pendientes ({vencimientos.filter((v) => !v.cumplido).length})
+            Pendientes ({vencimientos.filter((v) => !v.cumplido).length})
           </button>
           <button
             onClick={() => setFiltroEstado('CUMPLIDOS')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
+            className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer text-center ${
               filtroEstado === 'CUMPLIDOS'
                 ? 'bg-blue-600 text-white shadow-xs'
-                : 'text-slate-600 hover:bg-slate-100'
+                : 'text-slate-600 hover:bg-slate-100 bg-slate-50 sm:bg-transparent'
             }`}
           >
-            Historial Cumplidos ({vencimientos.filter((v) => v.cumplido).length})
+            Cumplidos ({vencimientos.filter((v) => v.cumplido).length})
           </button>
         </div>
 
         <button
           onClick={() => setModalNuevoAbierto(true)}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs flex items-center justify-center space-x-1.5 transition shrink-0"
+          className="w-full sm:w-auto px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs flex items-center justify-center space-x-1.5 transition shrink-0 cursor-pointer"
         >
           <Plus className="w-4 h-4" />
           <span>Fijar Término Fatal</span>
@@ -91,9 +92,9 @@ export function ModuloVencimientos() {
       </div>
 
       {/* Lista de Vencimientos */}
-      <div className="space-y-3">
+      <div className="space-y-2.5 sm:space-y-3">
         {vencimientosFiltrados.length === 0 ? (
-          <div className="bg-white p-12 text-center rounded-2xl border border-slate-200 text-slate-400 text-xs">
+          <div className="bg-white p-8 sm:p-12 text-center rounded-2xl border border-slate-200 text-slate-400 text-xs">
             No hay plazos judiciales en este estado.
           </div>
         ) : (
@@ -103,19 +104,19 @@ export function ModuloVencimientos() {
             return (
               <div
                 key={venc.id}
-                className={`p-5 rounded-2xl border bg-white shadow-2xs transition flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
+                className={`p-3.5 sm:p-5 rounded-2xl border bg-white shadow-2xs transition flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 ${
                   !venc.cumplido && tiempo.urgente
                     ? 'border-rose-200 hover:border-rose-300'
                     : 'border-slate-200 hover:border-blue-200'
                 }`}
               >
                 <div className="space-y-1.5 flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
+                  <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
                       Expte. {venc.numeroCausa}
                     </span>
                     <span
-                      className={`text-[11px] font-bold px-2 py-0.5 rounded border ${badgeCriticidad(
+                      className={`text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded border ${badgeCriticidad(
                         venc.nivelCriticidad
                       )}`}
                     >
@@ -124,7 +125,7 @@ export function ModuloVencimientos() {
 
                     {!venc.cumplido && (
                       <span
-                        className={`text-[11px] font-bold px-2 py-0.5 rounded ${
+                        className={`text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded ${
                           tiempo.urgente
                             ? 'bg-rose-500 text-white animate-pulse'
                             : 'bg-slate-100 text-slate-700'
@@ -135,46 +136,46 @@ export function ModuloVencimientos() {
                     )}
 
                     {venc.cumplido && (
-                      <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                      <span className="text-[10px] sm:text-[11px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                         Cumplido debidamente
                       </span>
                     )}
                   </div>
 
-                  <h4 className="text-sm font-black text-slate-900 tracking-tight">
+                  <h4 className="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
                     {venc.descripcionActo}
                   </h4>
 
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500 pt-0.5">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 pt-0.5">
                     <span className="flex items-center space-x-1">
-                      <FileText className="w-3.5 h-3.5 text-slate-400" />
-                      <span>{venc.caratula}</span>
+                      <FileText className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span className="truncate">{venc.caratula}</span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <User className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Responsable: <strong className="text-slate-800">{venc.abogadoResponsableNombre}</strong></span>
+                      <User className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                      <span className="truncate">Responsable: <strong className="text-slate-800">{venc.abogadoResponsableNombre}</strong></span>
                     </span>
                     <span className="flex items-center space-x-1">
-                      <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                      <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                       <span>Límite: {new Date(venc.fechaHoraLimite).toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' })} hs</span>
                     </span>
                   </div>
                 </div>
 
-                <div className="shrink-0 flex items-center space-x-3 self-end sm:self-center">
+                <div className="shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100 flex items-center justify-end">
                   <button
                     onClick={() => {
                       if (usuarioActual) {
                         alternarCumplimientoVencimiento(venc.id, usuarioActual);
                       }
                     }}
-                    className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 shadow-2xs ${
+                    className={`w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold transition flex items-center justify-center space-x-1.5 shadow-2xs cursor-pointer ${
                       venc.cumplido
                         ? 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                         : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     }`}
                   >
-                    <CheckCircle2 className="w-4 h-4" />
+                    <CheckCircle2 className="w-4 h-4 shrink-0" />
                     <span>{venc.cumplido ? 'Reabrir Plazo' : 'Marcar Cumplido'}</span>
                   </button>
                 </div>
@@ -184,20 +185,20 @@ export function ModuloVencimientos() {
         )}
       </div>
 
-      {/* Modal Nuevo Plazo */}
+      {/* Modal Nuevo Vencimiento */}
       {modalNuevoAbierto && (
-        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg overflow-hidden">
-            <div className="p-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+        <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-lg max-h-[92vh] flex flex-col overflow-hidden my-auto">
+            <div className="p-4 sm:p-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between shrink-0">
               <div className="flex items-center space-x-2">
                 <ClockAlert className="w-5 h-5 text-blue-600" />
-                <h3 className="text-base font-bold text-slate-800">Fijar Nuevo Vencimiento Procesal</h3>
+                <h3 className="text-sm sm:text-base font-bold text-slate-800">Fijar Nuevo Vencimiento</h3>
               </div>
               <button
                 onClick={() => setModalNuevoAbierto(false)}
-                className="text-slate-400 hover:text-slate-700 font-bold"
+                className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition"
               >
-                ✕
+                <X className="w-5 h-5" />
               </button>
             </div>
 
@@ -207,18 +208,18 @@ export function ModuloVencimientos() {
                 alert('Término judicial fijado con éxito en la agenda del despacho.');
                 setModalNuevoAbierto(false);
               }}
-              className="p-6 space-y-4 text-xs"
+              className="p-4 sm:p-6 space-y-3.5 text-xs overflow-y-auto flex-1"
             >
               <div>
                 <label className="block font-bold text-slate-700 mb-1">Causa Vinculada:</label>
                 <select
                   value={expedienteId}
                   onChange={(e) => setExpedienteId(e.target.value)}
-                  className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                  className="w-full p-2.5 border border-slate-300 rounded-lg bg-white font-medium text-xs"
                 >
                   {expedientes.map((exp) => (
                     <option key={exp.id} value={exp.id}>
-                      N° {exp.numeroCausa} - {exp.caratula.slice(0, 45)}...
+                      N° {exp.numeroCausa} - {exp.caratula.slice(0, 40)}...
                     </option>
                   ))}
                 </select>
@@ -231,19 +232,19 @@ export function ModuloVencimientos() {
                   value={descripcionActo}
                   onChange={(e) => setDescripcionActo(e.target.value)}
                   placeholder="Ej. Contestar traslado de demanda / Apelar sentencia"
-                  className="w-full p-2 border border-slate-300 rounded-lg font-medium"
+                  className="w-full p-2.5 border border-slate-300 rounded-lg font-medium text-xs"
                   required
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block font-bold text-slate-700 mb-1">Fecha y Hora Límite:</label>
                   <input
                     type="datetime-local"
                     value={fechaHoraLimite}
                     onChange={(e) => setFechaHoraLimite(e.target.value)}
-                    className="w-full p-2 border border-slate-300 rounded-lg font-medium"
+                    className="w-full p-2.5 border border-slate-300 rounded-lg font-medium text-xs"
                     required
                   />
                 </div>
@@ -252,7 +253,7 @@ export function ModuloVencimientos() {
                   <select
                     value={nivelCriticidad}
                     onChange={(e) => setNivelCriticidad(e.target.value as NivelCriticidad)}
-                    className="w-full p-2 border border-slate-300 rounded-lg bg-white font-medium"
+                    className="w-full p-2.5 border border-slate-300 rounded-lg bg-white font-medium text-xs"
                   >
                     <option value="Alta">Alta (Fatal / Caducidad)</option>
                     <option value="Media">Media (Término Ordinario)</option>
@@ -261,17 +262,17 @@ export function ModuloVencimientos() {
                 </div>
               </div>
 
-              <div className="flex justify-end space-x-2 pt-4 border-t border-slate-200">
+              <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 pt-4 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setModalNuevoAbierto(false)}
-                  className="px-4 py-2 border border-slate-300 rounded-lg font-semibold text-slate-700"
+                  className="w-full sm:w-auto px-4 py-2.5 border border-slate-300 rounded-xl font-semibold text-slate-700 text-center"
                 >
                   Cancelar
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg shadow-xs"
+                  className="w-full sm:w-auto px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-xs text-center cursor-pointer"
                 >
                   Agendar Vencimiento
                 </button>
@@ -283,4 +284,3 @@ export function ModuloVencimientos() {
     </div>
   );
 }
-

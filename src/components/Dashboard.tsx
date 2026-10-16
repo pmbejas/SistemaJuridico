@@ -35,93 +35,94 @@ export function Dashboard({ onNavegar, onSeleccionarExpediente }: DashboardProps
   }, {} as Record<string, number>);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Banner de Bienvenida y Estado del Estudio */}
-      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 rounded-2xl p-6 text-white shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-500/30 text-sky-200 border border-blue-400/30 inline-block mb-2">
-            Despacho Judicial Activo
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 rounded-2xl p-4 sm:p-6 text-white shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+        <div className="min-w-0">
+          <span className="text-[10px] sm:text-xs font-semibold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-blue-500/30 text-sky-200 border border-blue-400/30 inline-block mb-1.5 sm:mb-2">
+            Despacho Forense Activo
           </span>
-          <h2 className="text-xl md:text-2xl font-bold tracking-tight">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight truncate">
             Bienvenido, {usuarioActual?.nombreCompleto}
           </h2>
-          <p className="text-xs md:text-sm text-sky-100/90 mt-1">
-            Usted está operando con perfil de{' '}
-            <span className="font-semibold text-white">{usuarioActual?.tituloProfesional}</span>.
+          <p className="text-xs sm:text-sm text-sky-100/90 mt-0.5 sm:mt-1 truncate">
+            Operando como <span className="font-semibold text-white">{usuarioActual?.tituloProfesional}</span>.
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2 shrink-0 pt-1 sm:pt-0">
           <button
             onClick={() => onNavegar('expedientes')}
-            className="px-4 py-2 bg-white text-blue-900 font-semibold text-xs rounded-xl shadow-xs hover:bg-sky-50 transition flex items-center space-x-1.5"
+            className="w-full sm:w-auto px-3.5 py-2 bg-white text-blue-900 font-bold text-xs rounded-xl shadow-xs hover:bg-sky-50 transition flex items-center justify-center space-x-1.5 cursor-pointer"
           >
-            <span>Ver Causas</span>
+            <span>Ver Expedientes</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>
 
-      {/* Alerta de Vencimiento Inminente (Si hay plazos fatales) */}
+      {/* Alerta de Vencimiento Inminente */}
       {vencimientosPendientes.length > 0 && (
-        <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 flex items-start space-x-3 shadow-2xs">
-          <div className="p-2 bg-amber-100 rounded-lg text-amber-700 shrink-0">
-            <AlertTriangle className="w-5 h-5" />
+        <div className="p-3.5 sm:p-4 rounded-xl bg-amber-50 border border-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 shadow-2xs">
+          <div className="flex items-start space-x-2.5 sm:space-x-3">
+            <div className="p-2 bg-amber-100 rounded-lg text-amber-700 shrink-0 mt-0.5 sm:mt-0">
+              <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5" />
+            </div>
+            <div>
+              <h4 className="text-xs font-bold text-amber-900 uppercase tracking-wide">
+                Atención: Plazos Perentorios en Curso
+              </h4>
+              <p className="text-xs text-amber-800 mt-0.5">
+                Hay <strong className="font-bold">{vencimientosPendientes.length} término(s) judicial(es) pendiente(s)</strong>. Controla la agenda procesal.
+              </p>
+            </div>
           </div>
-          <div className="flex-1">
-            <h4 className="text-xs font-bold text-amber-900 uppercase tracking-wide">
-              Atención: Plazos Perentorios en Curso
-            </h4>
-            <p className="text-xs text-amber-800 mt-0.5">
-              Hay <span className="font-bold">{vencimientosPendientes.length} término(s) judicial(es) pendiente(s)</span>. Revise la agenda procesal para evitar preclusión de instancias.
-            </p>
-          </div>
+
           <button
             onClick={() => onNavegar('vencimientos')}
-            className="text-xs font-bold text-amber-900 hover:text-amber-950 underline shrink-0 mt-0.5"
+            className="text-xs font-bold text-amber-900 hover:text-amber-950 underline shrink-0 self-end sm:self-auto cursor-pointer"
           >
             Controlar plazos →
           </button>
         </div>
       )}
 
-      {/* Tarjetas de Métricas Principales */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Tarjetas de Métricas Principales (2x2 en móviles, 4x1 en escritorio) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {/* Métrica 1: Expedientes */}
         <div
           onClick={() => onNavegar('expedientes')}
-          className="p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-blue-300 hover:shadow-xs transition cursor-pointer group"
+          className="p-3.5 sm:p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-blue-300 hover:shadow-xs transition cursor-pointer group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-              Expedientes Activos
+            <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">
+              Expedientes
             </span>
-            <div className="p-2.5 rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
-              <Gavel className="w-4 h-4" />
+            <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition shrink-0">
+              <Gavel className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 mt-3">{expedientes.length}</div>
-          <div className="text-[11px] text-slate-500 mt-1 flex items-center space-x-1">
-            <span className="text-blue-600 font-semibold">100%</span>
-            <span>radicados con seguimiento</span>
+          <div className="text-xl sm:text-2xl font-black text-slate-900 mt-2 sm:mt-3">{expedientes.length}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
+            <span className="text-blue-600 font-semibold">100%</span> en trámite activo
           </div>
         </div>
 
         {/* Métrica 2: Vencimientos */}
         <div
           onClick={() => onNavegar('vencimientos')}
-          className="p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-rose-300 hover:shadow-xs transition cursor-pointer group"
+          className="p-3.5 sm:p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-rose-300 hover:shadow-xs transition cursor-pointer group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-              Vencimientos Fatales
+            <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">
+              Vencimientos
             </span>
-            <div className="p-2.5 rounded-xl bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition">
-              <ClockAlert className="w-4 h-4" />
+            <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-rose-50 text-rose-600 group-hover:bg-rose-600 group-hover:text-white transition shrink-0">
+              <ClockAlert className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 mt-3">{vencimientosPendientes.length}</div>
-          <div className="text-[11px] text-slate-500 mt-1">
+          <div className="text-xl sm:text-2xl font-black text-slate-900 mt-2 sm:mt-3">{vencimientosPendientes.length}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
             {vencimientosPendientes.filter((v) => v.nivelCriticidad === 'Alta').length} con criticidad alta
           </div>
         </div>
@@ -129,53 +130,57 @@ export function Dashboard({ onNavegar, onSeleccionarExpediente }: DashboardProps
         {/* Métrica 3: Tareas */}
         <div
           onClick={() => onNavegar('tareas')}
-          className="p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-sky-300 hover:shadow-xs transition cursor-pointer group"
+          className="p-3.5 sm:p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-sky-300 hover:shadow-xs transition cursor-pointer group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-              Tareas del Estudio
+            <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">
+              Diligencias
             </span>
-            <div className="p-2.5 rounded-xl bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition">
-              <ListTodo className="w-4 h-4" />
+            <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition shrink-0">
+              <ListTodo className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 mt-3">{tareasPendientes.length}</div>
-          <div className="text-[11px] text-slate-500 mt-1">Diligencias en curso en tribunales</div>
+          <div className="text-xl sm:text-2xl font-black text-slate-900 mt-2 sm:mt-3">{tareasPendientes.length}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
+            Tareas operativas en curso
+          </div>
         </div>
 
         {/* Métrica 4: Clientes */}
         <div
           onClick={() => onNavegar('clientes')}
-          className="p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-indigo-300 hover:shadow-xs transition cursor-pointer group"
+          className="p-3.5 sm:p-5 bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:border-indigo-300 hover:shadow-xs transition cursor-pointer group"
         >
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
-              Clientes Titulares
+            <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider truncate">
+              Clientes
             </span>
-            <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
-              <Users className="w-4 h-4" />
+            <div className="p-2 sm:p-2.5 rounded-lg sm:rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition shrink-0">
+              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
-          <div className="text-2xl font-black text-slate-900 mt-3">{clientes.length}</div>
-          <div className="text-[11px] text-slate-500 mt-1">Patrocinios activos en cartera</div>
+          <div className="text-xl sm:text-2xl font-black text-slate-900 mt-2 sm:mt-3">{clientes.length}</div>
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
+            Patrocinios en cartera
+          </div>
         </div>
       </div>
 
       {/* Sección Inferior: Distribución por Fueros y Últimas Actuaciones */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Distribución por Fueros */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
-          <div className="flex items-center space-x-2 pb-4 border-b border-slate-100">
+        <div className="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
+          <div className="flex items-center space-x-2 pb-3.5 border-b border-slate-100">
             <Building2 className="w-4 h-4 text-blue-600" />
             <h3 className="text-sm font-bold text-slate-800">Radicación por Fueros</h3>
           </div>
 
-          <div className="mt-4 space-y-3">
+          <div className="mt-3.5 space-y-3">
             {Object.entries(causasPorFuero).map(([fuero, cantidad]) => (
               <div key={fuero} className="space-y-1">
                 <div className="flex justify-between text-xs font-medium">
-                  <span className="text-slate-700">{fuero}</span>
-                  <span className="font-bold text-slate-900">{cantidad} causa(s)</span>
+                  <span className="text-slate-700 truncate pr-2">{fuero}</span>
+                  <span className="font-bold text-slate-900 shrink-0">{cantidad} causa(s)</span>
                 </div>
                 <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
                   <div
@@ -189,21 +194,21 @@ export function Dashboard({ onNavegar, onSeleccionarExpediente }: DashboardProps
         </div>
 
         {/* Últimas Actuaciones y Movimientos */}
-        <div className="lg:col-span-2 bg-white p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
-          <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div className="lg:col-span-2 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-2xs">
+          <div className="flex items-center justify-between pb-3.5 border-b border-slate-100">
             <div className="flex items-center space-x-2">
               <FileText className="w-4 h-4 text-blue-600" />
               <h3 className="text-sm font-bold text-slate-800">Cronología Procesal Reciente</h3>
             </div>
             <button
               onClick={() => onNavegar('expedientes')}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-800"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800 cursor-pointer"
             >
-              Ver todas las causas →
+              Ver todas →
             </button>
           </div>
 
-          <div className="divide-y divide-slate-100 mt-2">
+          <div className="divide-y divide-slate-100 mt-1">
             {expedientes.slice(0, 4).map((exp) => {
               const ultimoMov = exp.movimientos[exp.movimientos.length - 1];
 
@@ -211,11 +216,11 @@ export function Dashboard({ onNavegar, onSeleccionarExpediente }: DashboardProps
                 <div
                   key={exp.id}
                   onClick={() => onSeleccionarExpediente(exp.id)}
-                  className="py-3 px-2 rounded-lg hover:bg-slate-50 transition cursor-pointer flex items-start justify-between gap-3"
+                  className="py-3 px-1 sm:px-2 rounded-lg hover:bg-slate-50 transition cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-3"
                 >
-                  <div className="min-w-0">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100 shrink-0">
                         {exp.numeroCausa}
                       </span>
                       <span className="text-xs font-bold text-slate-800 truncate">
@@ -224,15 +229,15 @@ export function Dashboard({ onNavegar, onSeleccionarExpediente }: DashboardProps
                     </div>
 
                     {ultimoMov && (
-                      <p className="text-xs text-slate-500 mt-1 truncate">
+                      <p className="text-xs text-slate-500 mt-0.5 truncate">
                         <span className="font-medium text-slate-700">{ultimoMov.tipoActuacion}:</span>{' '}
                         {ultimoMov.titulo}
                       </p>
                     )}
                   </div>
 
-                  <div className="text-right shrink-0 text-xs text-slate-400 flex items-center space-x-1">
-                    <Calendar className="w-3 h-3" />
+                  <div className="text-left sm:text-right shrink-0 text-[11px] text-slate-400 flex items-center space-x-1">
+                    <Calendar className="w-3 h-3 text-slate-400" />
                     <span>{ultimoMov?.fechaActuacion || exp.fechaApertura}</span>
                   </div>
                 </div>

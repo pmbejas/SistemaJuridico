@@ -19,6 +19,7 @@ export default function PaginaPrincipal() {
 
   const [pestaniaActiva, setPestaniaActiva] = useState<PestaniaActiva>('dashboard');
   const [expedienteSeleccionadoId, setExpedienteSeleccionadoId] = useState<string | null>(null);
+  const [menuMovilAbierto, setMenuMovilAbierto] = useState(false);
 
   // Si no está autenticado, renderiza pantalla de login limpia
   if (!estaAutenticado) {
@@ -36,13 +37,13 @@ export default function PaginaPrincipal() {
       case 'expedientes':
         return 'Expedientes y Causas Judiciales';
       case 'vencimientos':
-        return 'Control de Vencimientos y Términos Fatales';
+        return 'Control de Vencimientos Fatales';
       case 'tareas':
-        return 'Tareas Operativas y Diligencias del Estudio';
+        return 'Tareas y Diligencias del Despacho';
       case 'clientes':
         return 'Directorio de Clientes Patrocinados';
       case 'auditoria':
-        return 'Bitácora Inmutable de Auditoría y Trazabilidad';
+        return 'Bitácora Inmutable de Auditoría';
       default:
         return 'Gestión Jurídica';
     }
@@ -55,7 +56,7 @@ export default function PaginaPrincipal() {
 
   return (
     <div className="flex h-screen bg-slate-100 overflow-hidden font-sans">
-      {/* Barra de Navegación Lateral */}
+      {/* Barra de Navegación Lateral (Desktop y Drawer Móvil) */}
       <BarraNavegacion
         pestaniaActiva={pestaniaActiva}
         onCambiarPestania={(nuevaPestania) => {
@@ -65,15 +66,21 @@ export default function PaginaPrincipal() {
           }
         }}
         cantidadVencimientosUrgentes={cantidadVencimientosUrgentes}
+        menuMovilAbierto={menuMovilAbierto}
+        onCerrarMenuMovil={() => setMenuMovilAbierto(false)}
+        onAbrirMenuMovil={() => setMenuMovilAbierto(true)}
       />
 
       {/* Contenedor Principal */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Barra Superior con Perfil, Switcher de Roles y Botón Salir */}
-        <BarraSuperior tituloVista={obtenerTituloVista()} />
+        <BarraSuperior
+          tituloVista={obtenerTituloVista()}
+          onAbrirMenuMovil={() => setMenuMovilAbierto(true)}
+        />
 
-        {/* Área de Contenido Dinámico */}
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 bg-slate-50/70">
+        {/* Área de Contenido Dinámico con padding inferior para no solaparse con la barra móvil */}
+        <main className="flex-1 overflow-y-auto p-3 sm:p-5 lg:p-8 pb-24 lg:pb-8 bg-slate-50/70">
           <div className="max-w-7xl mx-auto">
             {pestaniaActiva === 'dashboard' && (
               <Dashboard

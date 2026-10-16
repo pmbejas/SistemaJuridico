@@ -54,27 +54,27 @@ export function NuevoExpedienteModal({ alCerrar }: NuevoExpedienteModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl overflow-hidden my-auto">
-        <div className="p-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden my-auto">
+        <div className="p-4 sm:p-5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="p-2 rounded-lg bg-blue-100 text-blue-700">
+            <div className="p-2 rounded-lg bg-blue-100 text-blue-700 shrink-0">
               <FolderPlus className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-slate-800">Abrir Nuevo Expediente Judicial</h3>
-              <p className="text-xs text-slate-500">Registrar legajo de causa en el sistema</p>
+              <h3 className="text-sm sm:text-base font-bold text-slate-800">Abrir Nuevo Expediente Judicial</h3>
+              <p className="text-[11px] sm:text-xs text-slate-500">Registrar legajo de causa en el sistema</p>
             </div>
           </div>
           <button
             onClick={alCerrar}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <form onSubmit={manejarEnvio} className="p-6 space-y-4 text-xs">
+        <form onSubmit={manejarEnvio} className="p-4 sm:p-6 space-y-3.5 sm:space-y-4 text-xs overflow-y-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label className="block font-bold text-slate-700 mb-1">Número de Causa:</label>
@@ -200,17 +200,17 @@ export function NuevoExpedienteModal({ alCerrar }: NuevoExpedienteModalProps) {
             ></textarea>
           </div>
 
-          <div className="flex justify-end space-x-2 pt-4 border-t border-slate-200">
+          <div className="flex flex-col-reverse sm:flex-row justify-end gap-2 pt-4 border-t border-slate-200">
             <button
               type="button"
               onClick={alCerrar}
-              className="px-4 py-2 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50"
+              className="w-full sm:w-auto px-4 py-2 rounded-lg border border-slate-300 text-slate-700 font-semibold hover:bg-slate-50 cursor-pointer text-center"
             >
               Cancelar
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs"
+              className="w-full sm:w-auto px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs cursor-pointer text-center"
             >
               Registrar Expediente
             </button>
