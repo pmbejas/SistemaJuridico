@@ -124,3 +124,4 @@ export interface RegistroAuditoria {
   detalle: string;
   ipOrigen: string;
 }
+

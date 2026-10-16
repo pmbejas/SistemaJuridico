@@ -11,3 +11,4 @@ export function ProveedoresApp({ children }: { children: React.ReactNode }) {
     </AuthProvider>
   );
 }
+

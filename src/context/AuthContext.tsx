@@ -18,7 +18,6 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [usuarioActual, setUsuarioActual] = useState<Usuario | null>(null);
-  const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
     try {
@@ -28,8 +27,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
     } catch {
       // Ignora error si localStorage no está disponible
-    } finally {
-      setCargando(false);
     }
   }, []);
 
@@ -80,16 +77,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  if (cargando) {
-    return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">
-        <div className="flex items-center space-x-3">
-          <div className="w-6 h-6 border-2 border-sky-400 border-t-transparent rounded-full animate-spin"></div>
-          <span className="text-slate-300 font-medium">Iniciando entorno legal...</span>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <AuthContext.Provider
@@ -113,3 +100,4 @@ export function useAuth() {
   }
   return context;
 }
+

@@ -122,3 +122,4 @@ export function BarraSuperior({ tituloVista }: BarraSuperiorProps) {
     </header>
   );
 }
+

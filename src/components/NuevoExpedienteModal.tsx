@@ -220,3 +220,4 @@ export function NuevoExpedienteModal({ alCerrar }: NuevoExpedienteModalProps) {
     </div>
   );
 }
+

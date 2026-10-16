@@ -420,3 +420,4 @@ export const AUDITORIA_INICIAL: RegistroAuditoria[] = [
     ipOrigen: '190.210.45.12',
   },
 ];
+
