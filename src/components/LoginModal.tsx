@@ -130,7 +130,7 @@ export function LoginModal() {
                       <div className="text-xs font-bold text-slate-900 group-hover:text-blue-700 flex items-center space-x-1.5">
                         <span>{usr.nombreCompleto}</span>
                         {estaSeleccionado && (
-                          <span className="text-[10px] bg-blue-600 text-white font-bold px-1.5 py-0.2 rounded-full">
+                          <span className="text-[10px] bg-blue-600 text-white font-bold px-1.5 py-0.5 rounded-full">
                             Activo
                           </span>
                         )}
