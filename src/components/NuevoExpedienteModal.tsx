@@ -23,7 +23,7 @@ export function NuevoExpedienteModal({ alCerrar }: NuevoExpedienteModalProps) {
   const [estadoProcesal, setEstadoProcesal] = useState<EstadoProcesal>('En Trámite');
   const [clienteId, setClienteId] = useState(clientes[0]?.id || '');
   const [abogadoDirectorId, setAbogadoDirectorId] = useState(usuarioActual?.id || USUARIOS_MOCK[0].id);
-  const [procuradorAsignado, setProcuradorAsignado] = useState('Alejo Salas');
+  const [procuradorAsignado, setProcuradorAsignado] = useState('Dr. Alejo Salas');
   const [observaciones, setObservaciones] = useState('');
 
   const manejarEnvio = (e: React.FormEvent) => {

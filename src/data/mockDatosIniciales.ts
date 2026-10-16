@@ -28,7 +28,7 @@ export const USUARIOS_MOCK: Usuario[] = [
   },
   {
     id: 'usr-3',
-    nombreCompleto: 'Alejo Salas',
+    nombreCompleto: 'Dr. Alejo Salas',
     email: 'asalas@gmail.com',
     rol: 'PROCURADOR',
     tituloProfesional: 'Procurador Judicial - Matrícula N° 1045',
@@ -94,7 +94,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'María Florencia Gómez',
     abogadoDirectorId: 'usr-1',
     abogadoDirectorNombre: 'Dr. Pablo Bejas',
-    procuradorAsignadoNombre: 'Alejo Salas',
+    procuradorAsignadoNombre: 'Dr. Alejo Salas',
     observacionesEstrategicas: 'Reclamación de reintegro por débitos indebidos y daño moral. Se admitió la prueba pericial informática.',
     movimientos: [
       {
@@ -176,7 +176,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'Roberto Carlos Mansilla',
     abogadoDirectorId: 'usr-2',
     abogadoDirectorNombre: 'Dr. Alejo Garlati',
-    procuradorAsignadoNombre: 'Alejo Salas',
+    procuradorAsignadoNombre: 'Dr. Alejo Salas',
     observacionesEstrategicas: 'Reclamo por despido indirecto con indemnizaciones agravadas de la Ley 24.013.',
     movimientos: [
       {
@@ -226,7 +226,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'Transportes y Logística Andina S.R.L.',
     abogadoDirectorId: 'usr-2',
     abogadoDirectorNombre: 'Dr. Alejo Garlati',
-    procuradorAsignadoNombre: 'Alejo Salas',
+    procuradorAsignadoNombre: 'Dr. Alejo Salas',
     observacionesEstrategicas: 'Cobro de facturas comerciales impagas con cláusula penal por mora contractual.',
     movimientos: [
       {
@@ -260,7 +260,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'Sanatorio Metropolitano S.A.',
     abogadoDirectorId: 'usr-1',
     abogadoDirectorNombre: 'Dr. Pablo Bejas',
-    procuradorAsignadoNombre: 'Alejo Salas',
+    procuradorAsignadoNombre: 'Dr. Alejo Salas',
     observacionesEstrategicas: 'Impugnación de alícuota sobre ingresos brutos en servicios de alta complejidad médica.',
     movimientos: [
       {
@@ -341,7 +341,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Urgente',
     estado: 'En Curso',
     encomendadaPorNombre: 'Dr. Pablo Bejas',
-    asignadaANombre: 'Alejo Salas',
+    asignadaANombre: 'Dr. Alejo Salas',
     fechaCompromiso: '17/10/2026',
   },
   {
@@ -353,7 +353,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Normal',
     estado: 'Pendiente',
     encomendadaPorNombre: 'Dr. Alejo Garlati',
-    asignadaANombre: 'Alejo Salas',
+    asignadaANombre: 'Dr. Alejo Salas',
     fechaCompromiso: '19/10/2026',
   },
   {
@@ -377,7 +377,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Secundaria',
     estado: 'Finalizada',
     encomendadaPorNombre: 'Dr. Pablo Bejas',
-    asignadaANombre: 'Alejo Salas',
+    asignadaANombre: 'Dr. Alejo Salas',
     fechaCompromiso: '14/10/2026',
   },
 ];
@@ -395,7 +395,7 @@ export const AUDITORIA_INICIAL: RegistroAuditoria[] = [
   {
     id: 'aud-2',
     fechaHora: '15/10/2026 09:15:45',
-    usuarioNombre: 'Alejo Salas',
+    usuarioNombre: 'Dr. Alejo Salas',
     rolUsuario: 'PROCURADOR',
     tipoOperacion: 'CREACION',
     detalle: 'Registro de actuación procesal con cargo oficial en Expte. 14582/2024.',

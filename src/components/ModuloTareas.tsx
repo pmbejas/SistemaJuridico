@@ -27,7 +27,7 @@ export function ModuloTareas() {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [expedienteId, setExpedienteId] = useState(expedientes[0]?.id || '');
-  const [asignadaA, setAsignadaA] = useState('Alejo Salas');
+  const [asignadaA, setAsignadaA] = useState('Dr. Alejo Salas');
   const [prioridad, setPrioridad] = useState<PrioridadTarea>('Normal');
   const [fechaCompromiso, setFechaCompromiso] = useState(
     new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toLocaleDateString('es-AR')
