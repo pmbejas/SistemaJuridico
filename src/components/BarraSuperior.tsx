@@ -28,6 +28,27 @@ export function BarraSuperior({ tituloVista }: BarraSuperiorProps) {
     }
   };
 
+  const obtenerNombrePila = (nombre?: string) => {
+    if (!nombre) return 'Usuario';
+    const partes = nombre.trim().split(/\s+/).filter(Boolean);
+    if (partes.length === 0) return 'Usuario';
+    if (partes[0].toLowerCase().startsWith('dr') && partes.length > 1) {
+      return partes[1];
+    }
+    return partes[0];
+  };
+
+  const obtenerIniciales = (nombre?: string) => {
+    if (!nombre) return 'US';
+    const partes = nombre.trim().split(/\s+/).filter(Boolean);
+    if (partes.length === 0) return 'US';
+    if (partes.length === 1) return partes[0].slice(0, 2).toUpperCase();
+    if (partes[0].toLowerCase().startsWith('dr') && partes.length >= 3) {
+      return `${partes[1][0]}${partes[2][0]}`.toUpperCase();
+    }
+    return `${partes[0][0]}${partes[1][0]}`.toUpperCase();
+  };
+
   const badgeRol = obtenerEtiquetaRol(usuarioActual?.rol);
 
   return (
@@ -46,7 +67,7 @@ export function BarraSuperior({ tituloVista }: BarraSuperiorProps) {
           >
             <UserCheck className="w-3.5 h-3.5 text-blue-600" />
             <span className="hidden sm:inline">Cambiar Rol Demo:</span>
-            <span className="font-semibold text-slate-900">{usuarioActual?.nombreCompleto.split(' ')[1] || 'Usuario'}</span>
+            <span className="font-semibold text-slate-900">{obtenerNombrePila(usuarioActual?.nombreCompleto)}</span>
             <ChevronDown className="w-3 h-3 text-slate-400" />
           </button>
 
@@ -79,18 +100,14 @@ export function BarraSuperior({ tituloVista }: BarraSuperiorProps) {
         {/* Perfil del Usuario Activo */}
         <div className="flex items-center space-x-2.5 pl-2 border-l border-slate-200">
           <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
-            {usuarioActual?.nombreCompleto
-              .split(' ')
-              .map((p) => p[0])
-              .slice(0, 2)
-              .join('')}
+            {obtenerIniciales(usuarioActual?.nombreCompleto)}
           </div>
           <div className="hidden md:block text-left">
             <div className="text-xs font-bold text-slate-800 leading-tight">
               {usuarioActual?.nombreCompleto}
             </div>
             <div className="flex items-center space-x-1.5 mt-0.5">
-              <span className={`text-[10px] font-semibold px-1.5 py-0.2 rounded border ${badgeRol.clase}`}>
+              <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded border ${badgeRol.clase}`}>
                 {badgeRol.texto}
               </span>
             </div>

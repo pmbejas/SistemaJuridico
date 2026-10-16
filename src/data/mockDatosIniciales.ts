@@ -19,7 +19,7 @@ export const USUARIOS_MOCK: Usuario[] = [
   },
   {
     id: 'usr-2',
-    nombreCompleto: 'Dr. Alejandro Garlati',
+    nombreCompleto: 'Dr. Alejo Garlati',
     email: 'agarlati@gmail.com',
     rol: 'ABOGADO',
     tituloProfesional: 'Abogado Litigante - Matrícula Profesional N° 6120',
@@ -28,7 +28,7 @@ export const USUARIOS_MOCK: Usuario[] = [
   },
   {
     id: 'usr-3',
-    nombreCompleto: 'Álvaro Salas',
+    nombreCompleto: 'Alejo Salas',
     email: 'asalas@gmail.com',
     rol: 'PROCURADOR',
     tituloProfesional: 'Procurador Judicial - Matrícula N° 1045',
@@ -94,7 +94,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'María Florencia Gómez',
     abogadoDirectorId: 'usr-1',
     abogadoDirectorNombre: 'Dr. Pablo Bejas',
-    procuradorAsignadoNombre: 'Álvaro Salas',
+    procuradorAsignadoNombre: 'Alejo Salas',
     observacionesEstrategicas: 'Reclamación de reintegro por débitos indebidos y daño moral. Se admitió la prueba pericial informática.',
     movimientos: [
       {
@@ -175,8 +175,8 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteId: 'cli-3',
     clienteNombre: 'Roberto Carlos Mansilla',
     abogadoDirectorId: 'usr-2',
-    abogadoDirectorNombre: 'Dr. Alejandro Garlati',
-    procuradorAsignadoNombre: 'Álvaro Salas',
+    abogadoDirectorNombre: 'Dr. Alejo Garlati',
+    procuradorAsignadoNombre: 'Alejo Salas',
     observacionesEstrategicas: 'Reclamo por despido indirecto con indemnizaciones agravadas de la Ley 24.013.',
     movimientos: [
       {
@@ -225,8 +225,8 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteId: 'cli-2',
     clienteNombre: 'Transportes y Logística Andina S.R.L.',
     abogadoDirectorId: 'usr-2',
-    abogadoDirectorNombre: 'Dr. Alejandro Garlati',
-    procuradorAsignadoNombre: 'Álvaro Salas',
+    abogadoDirectorNombre: 'Dr. Alejo Garlati',
+    procuradorAsignadoNombre: 'Alejo Salas',
     observacionesEstrategicas: 'Cobro de facturas comerciales impagas con cláusula penal por mora contractual.',
     movimientos: [
       {
@@ -260,7 +260,7 @@ export const EXPEDIENTES_INICIALES: ExpedienteJudicial[] = [
     clienteNombre: 'Sanatorio Metropolitano S.A.',
     abogadoDirectorId: 'usr-1',
     abogadoDirectorNombre: 'Dr. Pablo Bejas',
-    procuradorAsignadoNombre: 'Álvaro Salas',
+    procuradorAsignadoNombre: 'Alejo Salas',
     observacionesEstrategicas: 'Impugnación de alícuota sobre ingresos brutos en servicios de alta complejidad médica.',
     movimientos: [
       {
@@ -303,7 +303,7 @@ export const VENCIMIENTOS_INICIALES: VencimientoProcesal[] = [
     fechaHoraLimite: '2026-10-20T12:00:00',
     descripcionActo: 'Presentar Pliego Interrogatorio para Testigos de Audiencia',
     nivelCriticidad: 'Alta',
-    abogadoResponsableNombre: 'Dr. Alejandro Garlati',
+    abogadoResponsableNombre: 'Dr. Alejo Garlati',
     cumplido: false,
   },
   {
@@ -314,7 +314,7 @@ export const VENCIMIENTOS_INICIALES: VencimientoProcesal[] = [
     fechaHoraLimite: '2026-10-24T10:00:00',
     descripcionActo: 'Presentar Memorial de Contestación de Agravios de Alzada',
     nivelCriticidad: 'Media',
-    abogadoResponsableNombre: 'Dr. Alejandro Garlati',
+    abogadoResponsableNombre: 'Dr. Alejo Garlati',
     cumplido: false,
   },
   {
@@ -341,7 +341,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Urgente',
     estado: 'En Curso',
     encomendadaPorNombre: 'Dr. Pablo Bejas',
-    asignadaANombre: 'Álvaro Salas',
+    asignadaANombre: 'Alejo Salas',
     fechaCompromiso: '17/10/2026',
   },
   {
@@ -352,8 +352,8 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     descripcionDetallada: 'Verificar fojas reservadas en secretaría previo a la audiencia testimonial.',
     nivelPrioridad: 'Normal',
     estado: 'Pendiente',
-    encomendadaPorNombre: 'Dr. Alejandro Garlati',
-    asignadaANombre: 'Álvaro Salas',
+    encomendadaPorNombre: 'Dr. Alejo Garlati',
+    asignadaANombre: 'Alejo Salas',
     fechaCompromiso: '19/10/2026',
   },
   {
@@ -365,7 +365,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Normal',
     estado: 'Pendiente',
     encomendadaPorNombre: 'Dr. Pablo Bejas',
-    asignadaANombre: 'Dr. Alejandro Garlati',
+    asignadaANombre: 'Dr. Alejo Garlati',
     fechaCompromiso: '22/10/2026',
   },
   {
@@ -377,7 +377,7 @@ export const TAREAS_INICIALES: TareaOperativa[] = [
     nivelPrioridad: 'Secundaria',
     estado: 'Finalizada',
     encomendadaPorNombre: 'Dr. Pablo Bejas',
-    asignadaANombre: 'Álvaro Salas',
+    asignadaANombre: 'Alejo Salas',
     fechaCompromiso: '14/10/2026',
   },
 ];
@@ -395,7 +395,7 @@ export const AUDITORIA_INICIAL: RegistroAuditoria[] = [
   {
     id: 'aud-2',
     fechaHora: '15/10/2026 09:15:45',
-    usuarioNombre: 'Álvaro Salas',
+    usuarioNombre: 'Alejo Salas',
     rolUsuario: 'PROCURADOR',
     tipoOperacion: 'CREACION',
     detalle: 'Registro de actuación procesal con cargo oficial en Expte. 14582/2024.',
@@ -404,7 +404,7 @@ export const AUDITORIA_INICIAL: RegistroAuditoria[] = [
   {
     id: 'aud-3',
     fechaHora: '15/10/2026 11:20:00',
-    usuarioNombre: 'Dr. Alejandro Garlati',
+    usuarioNombre: 'Dr. Alejo Garlati',
     rolUsuario: 'ABOGADO',
     tipoOperacion: 'MODIFICACION',
     detalle: 'Actualización de observaciones estratégicas en Expte. 4921/2023.',

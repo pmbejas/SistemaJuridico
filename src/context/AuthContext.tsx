@@ -23,25 +23,43 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const sesionGuardada = localStorage.getItem(CLAVE_STORAGE_SESION);
       if (sesionGuardada) {
-        setUsuarioActual(JSON.parse(sesionGuardada));
+        const datos = JSON.parse(sesionGuardada);
+        const usuarioEncontrado = USUARIOS_MOCK.find(
+          (u) => u.email.toLowerCase() === datos?.email?.toLowerCase() || u.id === datos?.id
+        );
+        if (usuarioEncontrado) {
+          setUsuarioActual(usuarioEncontrado);
+        } else {
+          localStorage.removeItem(CLAVE_STORAGE_SESION);
+          setUsuarioActual(null);
+        }
       }
     } catch {
-      // Ignora error si localStorage no está disponible
+      localStorage.removeItem(CLAVE_STORAGE_SESION);
+      setUsuarioActual(null);
     }
   }, []);
 
   const iniciarSesion = (email: string, contrasenia: string) => {
-    const emailNormalizado = email.trim().toLowerCase();
+    const emailNormalizado = (email || '').trim().toLowerCase();
+    const contraseniaNormalizada = (contrasenia || '').trim();
+
     const usuarioEncontrado = USUARIOS_MOCK.find(
       (u) => u.email.toLowerCase() === emailNormalizado
     );
 
     if (!usuarioEncontrado) {
-      return { exito: false, mensajeError: 'No existe un usuario registrado con ese correo electrónico.' };
+      return {
+        exito: false,
+        mensajeError: 'No existe un usuario registrado con ese correo electrónico. Usuarios disponibles: pmbejas@gmail.com, agarlati@gmail.com o asalas@gmail.com',
+      };
     }
 
-    if (contrasenia !== 'pepito123') {
-      return { exito: false, mensajeError: 'Contraseña incorrecta. Recuerde que para la demo es "pepito123".' };
+    if (contraseniaNormalizada !== 'pepito123') {
+      return {
+        exito: false,
+        mensajeError: 'Contraseña incorrecta. Recuerde que para la demo la contraseña es "pepito123".',
+      };
     }
 
     setUsuarioActual(usuarioEncontrado);
@@ -55,8 +73,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const iniciarSesionRapida = (email: string) => {
+    const emailNormalizado = (email || '').trim().toLowerCase();
     const usuarioEncontrado = USUARIOS_MOCK.find(
-      (u) => u.email.toLowerCase() === email.toLowerCase()
+      (u) => u.email.toLowerCase() === emailNormalizado
     );
     if (usuarioEncontrado) {
       setUsuarioActual(usuarioEncontrado);
